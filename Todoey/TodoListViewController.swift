@@ -18,7 +18,6 @@ class TodoListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
     }
 }
 
@@ -31,7 +30,7 @@ extension TodoListViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
         
-        cell.textLabel!.text = itemArray[indexPath.row]
+        cell.textLabel! .text = itemArray[indexPath.row]
         return cell
     }
 }
