@@ -64,13 +64,10 @@ extension TodoListViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
-        cell.textLabel!.text = itemArray[indexPath.row].title
+        let item = itemArray[indexPath.row]
+        cell.textLabel!.text = item.title
         
-        if itemArray[indexPath.row].done == false {
-            cell.accessoryType = .none
-        } else {
-            cell.accessoryType = .checkmark
-        }
+        cell.accessoryType = item.done ? .checkmark : .none
         
         return cell
     }
