@@ -9,20 +9,13 @@
 import UIKit
 
 class TodoListViewController: UITableViewController {
-
+    
     var itemArray = [Item]()
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        appendItem(item: "Find Mike")
-        appendItem(item: "Buy Eggs")
-        appendItem(item: "Get Milk")
-        
-//        if let items = defaults.array(forKey: "TodoArray") as? [Item] {
-//            itemArray = items
-//        }
+        loadItems()
     }
     
     func appendItem(item: String) {
@@ -36,7 +29,7 @@ class TodoListViewController: UITableViewController {
         let alert = UIAlertController(title: "Add New Todoey Item", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add Item", style: .default) { action in
             if let text = textField.text,
-                textField.text != "" {
+               textField.text != "" {
                 self.appendItem(item: text)
                 
                 self.saveItems()
@@ -63,6 +56,17 @@ class TodoListViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    func loadItems() {
+        
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            let decoder = PropertyListDecoder()
+            do {
+                itemArray = try decoder.decode([Item].self, from: data)
+            } catch {
+                print(error)
+            }
+        }
+    }
 }
 
 
