@@ -16,9 +16,16 @@ class TodoListViewController: UITableViewController {
         "Find Precious "
     ]
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let items = defaults.array(forKey: "TodoArray") as? [String] {
+            itemArray = items
+        }
     }
+    
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         var textField = UITextField()
         
@@ -27,6 +34,7 @@ class TodoListViewController: UITableViewController {
             if let text = textField.text,
                 textField.text != "" {
                 self.itemArray.append(text)
+                self.defaults.set(self.itemArray, forKey: "TodoArray")
                 self.tableView.reloadData()
             }
         }
