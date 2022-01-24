@@ -80,9 +80,9 @@ extension TodoListViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
-        tableView.reloadData()
         saveItems()
         tableView.deselectRow(at: indexPath, animated: true)
+        tableView.reloadData()
     }
 }
 
