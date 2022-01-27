@@ -17,7 +17,7 @@ class CategoryViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //loadCategories()
+        loadCategories()
     }
     
     //MARK: - Tableview Datasource Methods
