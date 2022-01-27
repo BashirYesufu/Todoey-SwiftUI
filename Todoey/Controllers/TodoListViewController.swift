@@ -80,10 +80,17 @@ extension TodoListViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        context.delete(itemArray[indexPath.row])
-//        itemArray.remove(at: indexPath.row)
-//        todoItems[indexPath.row].done = !todoItems[indexPath.row].done
-//        tableView.deselectRow(at: indexPath, animated: true)
+        if let item = todoItems?[indexPath.row] {
+            do {
+                try realm.write {
+                    item.done = !item.done
+                }
+            } catch {
+                print(error)
+            }
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.reloadData()
     }
 }
 
