@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,8 +14,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bBZ-NI-CCu" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eMA-2B-q40">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="eMA-2B-q40">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                         <textAttributes key="titleTextAttributes">
@@ -63,12 +64,15 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Items" id="d8d-c4-mU8">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="dXk-gD-0y5">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" name="navDefaults"/>
                             <connections>
                                 <action selector="addButtonPressed:" destination="NR0-pt-1i1" id="5cw-gA-wQs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="0hI-Qy-6SD" id="dLO-B3-j8O"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cce-30-pEJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -99,7 +103,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Todoey" id="k6Z-nd-CyY">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="cMp-6p-hZQ">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" name="navDefaults"/>
                             <connections>
                                 <action selector="addButtonPressed:" destination="bHf-hu-Wmx" id="R4x-KE-cJu"/>
                             </connections>

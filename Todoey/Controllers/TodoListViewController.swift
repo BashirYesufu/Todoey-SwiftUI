@@ -19,9 +19,19 @@ class TodoListViewController: SwipeTableViewController {
             loadItems()
         }
     }
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = selectedCategory?.name
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let navBarColor = UIColor(hexString: selectedCategory!.color),
+           let navBar = navigationController?.navigationBar {
+            navBar.backgroundColor = navBarColor
+            searchBar.barTintColor = navBarColor
+        }
     }
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -29,7 +39,7 @@ class TodoListViewController: SwipeTableViewController {
         let alert = UIAlertController(title: "Add New Todoey Item", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add Item", style: .default) { action in
             if let text = textField.text,
-                text != "" {
+               text != "" {
                 if let currentCategory = self.selectedCategory {
                     do {
                         try self.realm.write({
@@ -56,7 +66,7 @@ class TodoListViewController: SwipeTableViewController {
     }
     
     func loadItems() {
-
+        
         todoItems = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
         tableView.reloadData()
     }
