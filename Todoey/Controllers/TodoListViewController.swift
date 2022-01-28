@@ -8,8 +8,9 @@
 
 import UIKit
 import RealmSwift
+import SwiftUI
 
-class TodoListViewController: UITableViewController {
+class TodoListViewController: SwipeTableViewController {
     
     var todoItems: Results<Item>?
     let realm = try! Realm()
@@ -19,10 +20,9 @@ class TodoListViewController: UITableViewController {
         }
     }
     
-    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = 80.0
     }
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -61,6 +61,18 @@ class TodoListViewController: UITableViewController {
         todoItems = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
         tableView.reloadData()
     }
+    
+    override func updateModel(at indexPath: IndexPath) {
+        if let item = todoItems?[indexPath.row] {
+            do {
+                try realm.write({
+                    realm.delete(item)
+                })
+            } catch {
+                print(error)
+            }
+        }
+    }
 }
 
 // MARK: - Table view methods
@@ -70,7 +82,7 @@ extension TodoListViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         if let item = todoItems?[indexPath.row] {
             cell.textLabel!.text = item.title
             cell.accessoryType = item.done ? .checkmark : .none
@@ -84,8 +96,7 @@ extension TodoListViewController {
         if let item = todoItems?[indexPath.row] {
             do {
                 try realm.write {
-                    realm.delete(item)
-                    //item.done = !item.done
+                    item.done = !item.done
                 }
             } catch {
                 print(error)
