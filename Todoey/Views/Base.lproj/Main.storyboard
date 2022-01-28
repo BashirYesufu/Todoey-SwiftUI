@@ -8,6 +8,28 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="5ud-br-Yem">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bBZ-NI-CCu" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eMA-2B-q40">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bHf-hu-Wmx" kind="relationship" relationship="rootViewController" id="ZjT-xI-nUT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5kP-wr-vCE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="915.94202898550736" y="72.991071428571431"/>
+        </scene>
         <!--Items-->
         <scene sceneID="DZA-BI-CKW">
             <objects>
@@ -52,28 +74,6 @@
             </objects>
             <point key="canvasLocation" x="2770" y="73"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="5ud-br-Yem">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bBZ-NI-CCu" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eMA-2B-q40">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" systemColor="systemBlueColor"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="bHf-hu-Wmx" kind="relationship" relationship="rootViewController" id="ZjT-xI-nUT"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5kP-wr-vCE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="915.94202898550736" y="72.991071428571431"/>
-        </scene>
         <!--Todoey-->
         <scene sceneID="OBX-TH-9kZ">
             <objects>
@@ -114,7 +114,11 @@
             <point key="canvasLocation" x="1823" y="76"/>
         </scene>
     </scenes>
+    <color key="tintColor" name="navDefaults"/>
     <resources>
+        <namedColor name="navDefaults">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
